@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Result</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: #00b859;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a.brand-logo {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-left: 1rem;
+      color: #fff;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .result-container {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 15px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-container p {
+      font-size: 1.8rem;
+      color: #00b859;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #00b859;
+      padding: 1rem 0;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ******NAVBAR****** -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">CropMaster</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/crop-planning/">Crop Planning</a></li>
+        <li><a href="/disease-detection/">Disease Detection</a></li>
+        <li><a href="/sell/">Sell</a></li>
+        <li><a href="/buy/">Buy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ******RESULT SECTION****** -->
+  <main>
+    <div class="result-container">
+      <p>The best crop to grow is <strong>{{ prediction }}</strong>!</p>
+    </div>
+  </main>
+
+  <!-- ******FOOTER****** -->
+  <footer>
+    <p class="footeredit">&copy; 2024 CropMaster. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

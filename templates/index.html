@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lima - Empowering Farmers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #ffffff;
+            box-shadow: none;
+        }
+
+        nav a.brand-logo {
+            color: #099445;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul li a {
+            color: #000;
+            font-size: 16px;
+        }
+
+        .sidenav {
+            background-color: white;
+        }
+
+        .sidenav a {
+            color: #099445;
+            font-size: 16px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 153, 69, 0.7), rgba(182, 248, 211, 0.7)), url("/static/assets/Rectangle 100.png") no-repeat center;
+            background-size: cover;
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+        }
+
+        .hero img {
+            width: 150px;
+            margin: 20px auto;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10%;
+            margin: 10px 0;
+            box-shadow: 0px 4px 10px rgba(0, 153, 69, 0.3);
+        }
+
+        .section .content {
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #099445;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+            text-align: center;
+            color: #666;
+        }
+
+        footer img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #099445;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Enhanced Styling for Menu Button */
+    .sidenav-trigger {
+        background-color: #099445; /* Green background */
+        color: #fff; /* White icon */
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .sidenav-trigger:hover {
+        background-color: #066b30; /* Darker green on hover */
+        cursor: pointer;
+    }
+
+    .sidenav-trigger:hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .section {
+                flex-direction: row;
+                justify-content: space-around;
+                text-align: left;
+            }
+
+            .section img {
+                max-width: 40%;
+                height: auto;
+            }
+
+            .section .content {
+                max-width: 50%;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Lima</a>
+            <!-- Updated sidenav-trigger with tooltip -->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger" data-tooltip="Open Menu">
+                <i class="fas fa-bars"></i>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/crop-planning/">Crop Planning</a></li>
+                <li><a href="/disease-detection/">Disease Detection</a></li>
+                <li><a href="/sell/">Sell</a></li>
+                <li><a href="/buy/">Buy</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <!-- Mobile Menu -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li><a href="/crop-planning/">Crop Planning</a></li>
+        <li><a href="/disease-detection/">Disease Detection</a></li>
+        <li><a href="/sell/">Sell</a></li>
+        <li><a href="/buy/">Buy</a></li>
+    </ul>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="/static/assets/lima 6.png" alt="Lima Logo">
+        <p>A perfect guide for farmers to help them through the entire process of farming.</p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <img src="/static/assets/crop_planning.png" alt="Crop Field" style="width: 400px; height: 300px;">
+        <div class="content">
+            <p>Lima improves farmer's lives by teaching them better farming methods. it guides farmers in choosing the right crops to plant in their gardens and the plant choosen by Lima provides the best yield.</p>
+            <a class="waves-effect waves-light btn" href="/crop-planning/">Crop Recommendation</a>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <img src="/static/assets/Disease.png" alt="Disease Detection" style="width: 400px; height: 300px;">
+        <div class="content">
+            <p>Lima assists farmers in identifying crop diseases and methods that can be utilized to mitigate them for better yields. It's accuracy in detecting diseases goes beyond that of most farmers and it keep on increasing relying on new discoveries in technology.</p>
+            <a class="waves-effect waves-light btn" href="/disease-detection/">Disease Detection</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img src="/static/assets/lima 3.png" alt="Footer Logo">
+        <p>© 2024 Lima. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Initialize Sidenav
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidenav = document.querySelectorAll(".sidenav");
+            M.Sidenav.init(sidenav);
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        window.onscroll = () => {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "flex";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        scrollToTopBtn.onclick = () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        
+        document.addEventListener("DOMContentLoaded", function () {
+        const sidenav = document.querySelectorAll(".sidenav");
+        M.Sidenav.init(sidenav);
+
+    // Initialize Tooltip
+        const tooltips = document.querySelectorAll('.sidenav-trigger');
+        M.Tooltip.init(tooltips);
+        });
+
+
+    </script>
+</body>
+
+</html>

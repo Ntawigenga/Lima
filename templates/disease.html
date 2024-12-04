@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Detection | Lima</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the body takes at least full height of the screen */
+    }
+
+    nav {
+      background-color: #00b859;
+      padding: 0 1.5rem;
+    }
+
+    nav .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #c0ffe2;
+    }
+
+    .banner {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-section {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: #f9f9f9;
+    }
+
+    .intro-section p {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      margin: 0;
+    }
+
+    /* Upload Section */
+    .upload-section {
+      background-color: #b5fed5;
+      padding: 3rem 1.5rem;
+      border-radius: 0 0 50px 50px;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.15);
+      flex-grow: 1; /* Allow this section to grow and center in available space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically */
+      align-items: center;
+    }
+
+    .upload-section h4 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .upload-section .btn {
+      background-color: #00b859;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.7rem 2.5rem;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .file-field .file-path-wrapper input {
+      border-bottom: 2px solid #00b859;
+      font-size: 1rem;
+      text-align: center; /* Center text in file path input */
+    }
+
+    .file-field .btn {
+      text-align: center; /* Center text in the button */
+    }
+
+    #upload-btn {
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+      margin-left: 20px;
+    }
+
+    #upload-btn:hover {
+      background-color: #00994e;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #00b859;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: auto; /* Push the footer to the bottom */
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 5px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Remove Scroll to Top Button */
+    .scroll-to-top {
+      display: none; /* Hide the scroll-up button */
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        font-size: 0.9rem;
+      }
+
+      .upload-section h4 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ******NAVBAR****** -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Lima</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/crop-planning/">Crop Planning</a></li>
+        <li><a href="/disease-detection/">Disease Detection</a></li>
+        <li><a href="/sell/">Sell</a></li>
+        <li><a href="/buy/">Buy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ******INTRODUCTION****** -->
+  <div class="intro-section">
+    <p style="margin-left: 100px;">
+      Together, we ensure healthier crops and better yields!
+    </p>
+  </div>
+
+  <!-- ******UPLOAD SECTION****** -->
+  <section class="upload-section">
+    <h4>Upload a picture of your crop to detect diseases</h4>
+    <form action="{{ url_for('disease_detection') }}" method="post" enctype="multipart/form-data">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Choose File</span>
+          <input type="file" name="file" id="fileInput" required>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" id="filePath" placeholder="Select an image" readonly>
+        </div>
+      </div>
+      <button id="upload-btn" type="submit" class="btn">Detect</button>
+    </form>
+  </section>
+
+  <!-- ******FOOTER****** -->
+  <footer>
+    <p>&copy; 2024 Lima. All rights reserved. </p>
+  </footer>
+
+  <script>
+    // Change placeholder text based on selected file
+    const fileInput = document.getElementById("fileInput");
+    const filePath = document.getElementById("filePath");
+
+    fileInput.addEventListener("change", function () {
+      const fileName = fileInput.files[0] ? fileInput.files[0].name : "Select an image of your crop";
+      filePath.value = fileName;
+    });
+  </script>
+</body>
+
+</html>

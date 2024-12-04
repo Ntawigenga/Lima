@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Result | Lima</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background-color: #00b859;
+            padding: 0 1.5rem;
+        }
+
+        nav .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c0ffe2;
+        }
+
+        .banner {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .b_txt {
+            background-color: #f9f9f9;
+            border: 3px solid #00b859;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .b_txt p {
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.8rem;
+            color: #333;
+        }
+
+        .b_txt p span {
+            font-weight: 600;
+            color: #00b859;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00b859;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00b859;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .scroll-to-top i {
+            font-size: 1.5rem;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #00994e;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                font-size: 0.9rem;
+            }
+
+            .b_txt p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ******NAVBAR****** -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Lima</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/crop-planning/">Crop Planning</a></li>
+                <li><a href="/disease-detection/">Disease Detection</a></li>
+                <li><a href="/sell/">Sell</a></li>
+                <li><a href="/buy/">Buy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ******RESULT SECTION****** -->
+    <div class="b_txt">
+        <p>Your crop diagnosis result is: <span>{{ prediction }}</span></p>
+    </div>
+
+    <!-- ******FOOTER****** -->
+    <footer>
+        <p>&copy; 2024 Lima. All rights reserved. <a href="/terms">Terms of Service</a></p>
+    </footer>
+
+    <!-- ******SCROLL TO TOP BUTTON****** -->
+    <button class="scroll-to-top" id="scrollToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Scroll-to-Top Button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+
+</html>
